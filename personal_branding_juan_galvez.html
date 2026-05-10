@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Branding Project — Juan Gálvez Gafo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --cream: #F7F3EE;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light-gray: #F0EDE8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+    top: -150px; right: -150px;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.1);
+    bottom: -100px; left: -100px;
+  }
+
+  .cover-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -2px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .cover h1 span { color: var(--gold); font-style: italic; }
+
+  .cover-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 24px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .cover-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 36px auto;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .cover-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+    animation: scrollLine 1.5s ease infinite;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .divider-full {
+    width: 100%;
+    height: 1px;
+    background: rgba(11,31,58,0.08);
+    margin: 0;
+  }
+
+  /* ── A. COHERENCIA ── */
+  .coherencia-bg {
+    background: var(--navy);
+    padding: 80px 0;
+  }
+  .coherencia-bg .section-label { color: var(--gold); }
+  .coherencia-bg .section-title { color: var(--white); }
+  .coherencia-bg p { color: rgba(255,255,255,0.7); }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px; top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(201,168,76,0.3);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 40px;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .timeline-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .companies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .company-tag {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* ── B. AUTENTICIDAD ── */
+  .dafo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(11,31,58,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+
+  .dafo-cell {
+    background: var(--white);
+    padding: 32px;
+  }
+
+  .dafo-cell h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dafo-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .dafo-cell ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dafo-cell ul li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--gray);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .dafo-cell ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 10px;
+  }
+
+  .dafo-f { border-top: 3px solid #22C55E; }
+  .dafo-d { border-top: 3px solid #EF4444; }
+  .dafo-o { border-top: 3px solid #3B82F6; }
+  .dafo-a { border-top: 3px solid #F59E0B; }
+
+  .reverse-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .reverse-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px;
+    border-left: 3px solid var(--gold);
+  }
+
+  .reverse-card .logro {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .reverse-card .habilidad {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .skill-chip {
+    background: var(--navy);
+    color: var(--gold);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .benchmarking-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .bench-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .bench-initial {
+    width: 56px; height: 56px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin: 0 auto 16px;
+  }
+
+  .bench-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .bench-card p {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ── C. POSICIONAMIENTO ── */
+  .positioning-bg {
+    background: var(--navy);
+    padding: 80px 0;
+  }
+
+  .positioning-statement {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    padding: 48px;
+    margin-top: 40px;
+  }
+
+  .ps-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .ps-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .ps-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    width: 130px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .ps-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .valor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .valor-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .valor-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .valor-card h4 { font-size: 14px; font-weight: 500; color: var(--gold); margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+  .valor-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── D. VISIBILIDAD ── */
+  .shield-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .shield-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px;
+  }
+
+  .shield-card h3 {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .shield-items { display: flex; flex-direction: column; gap: 12px; }
+
+  .shield-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--navy);
+  }
+
+  .shield-num {
+    width: 28px; height: 28px;
+    background: var(--navy);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── E. PLAN DE ACCIÓN ── */
+  .pap-bg { background: var(--light-gray); padding: 80px 0; }
+
+  .pap-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pap-table th {
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .pap-table td {
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--navy);
+    border-bottom: 1px solid rgba(11,31,58,0.06);
+    line-height: 1.5;
+  }
+
+  .pap-table tr:last-child td { border-bottom: none; }
+  .pap-table tr:hover td { background: rgba(11,31,58,0.02); }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .badge-green { background: rgba(34,197,94,0.1); color: #16A34A; }
+  .badge-blue { background: rgba(59,130,246,0.1); color: #2563EB; }
+  .badge-gold { background: rgba(201,168,76,0.15); color: #92670A; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 60px 40px;
+  }
+
+  .footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .footer h2 span { color: var(--gold); font-style: italic; }
+
+  .footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── NAV BUTTONS ── */
+  .cover-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: rgba(255,255,255,0.7);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .nav-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover { page-break-after: always; min-height: auto; padding: 80px; }
+    .scroll-hint { display: none; }
+    .cover-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-tag">Personal Branding Project · UFV Madrid · 2025–2026</div>
+  <h1>Juan<br><span>Gálvez</span><br>Gafo</h1>
+  <div class="cover-divider"></div>
+  <div class="cover-subtitle">Business Analytics + ADE · Grupo BA2<br>4º ILP Carrera Profesional I: Mentoring · Modelo CAV</div>
+  <div class="cover-meta" style="margin-top: 16px;">Coherencia · Autenticidad · Visibilidad</div>
+  <nav class="cover-nav">
+    <a class="nav-btn" href="#coherencia">A · Coherencia</a>
+    <a class="nav-btn" href="#dafo">B · DAFO Personal</a>
+    <a class="nav-btn" href="#reverse">Reverse Exercise</a>
+    <a class="nav-btn" href="#benchmarking">Benchmarking</a>
+    <a class="nav-btn" href="#posicionamiento">C · Posicionamiento</a>
+    <a class="nav-btn" href="#visibilidad">D · Visibilidad</a>
+    <a class="nav-btn" href="#pap">E · Plan de Acción</a>
+  </nav>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- A. COHERENCIA -->
+<div id="coherencia" class="coherencia-bg">
+  <div class="section fade-in">
+    <div class="section-label">A · Coherencia</div>
+    <div class="section-title" style="color:white;">¿Adónde voy?<br><em>Objetivos y visión de carrera</em></div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <h3>En 1 año — Primer rol en finanzas</h3>
+          <p>Terminar el doble grado con sólidas bases cuantitativas. Conseguir unas prácticas o posición junior en un área de gestión de activos o banca privada en Madrid, poniendo en práctica los conocimientos de Business Analytics aplicados al análisis financiero.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <h3>En 2 años — Consolidación y especialización</h3>
+          <p>Estar trabajando en una firma de Asset Management o banca privada, idealmente con responsabilidad directa sobre análisis de carteras o relación con clientes de alto patrimonio. Explorar oportunidades en Europa ampliando la red de contactos internacional.</p>
+        </div>
+      </div>
+      <div class="timeline-item" style="padding-bottom:0">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <h3>En 3 años — Posición europea</h3>
+          <p>Ocupar un rol de responsabilidad creciente en gestión de patrimonios o inversiones en una firma de referencia europea — Londres, Zúrich, Frankfurt o Madrid. Potencialmente valorar un máster especializado (CFA o MSc Finance) para acelerar el crecimiento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 56px;">
+      <p style="color:rgba(255,255,255,0.5); font-size:11px; letter-spacing:3px; text-transform:uppercase; margin-bottom: 16px;">20 Empresas Target</p>
+      <div class="companies-grid">
+        <div class="company-tag">BlackRock</div>
+        <div class="company-tag">JP Morgan AM</div>
+        <div class="company-tag">Goldman Sachs</div>
+        <div class="company-tag">Morgan Stanley</div>
+        <div class="company-tag">Santander WM</div>
+        <div class="company-tag">BBVA AM</div>
+        <div class="company-tag">CaixaBank AM</div>
+        <div class="company-tag">Fidelity</div>
+        <div class="company-tag">Schroders</div>
+        <div class="company-tag">Amundi</div>
+        <div class="company-tag">Lazard</div>
+        <div class="company-tag">Rothschild & Co</div>
+        <div class="company-tag">UBS WM</div>
+        <div class="company-tag">Credit Suisse</div>
+        <div class="company-tag">BNP Paribas AM</div>
+        <div class="company-tag">Pictet</div>
+        <div class="company-tag">Vanguard</div>
+        <div class="company-tag">Mapfre AM</div>
+        <div class="company-tag">Mutua Madrileña</div>
+        <div class="company-tag">Bestinver</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider-full"></div>
+
+<!-- B. AUTENTICIDAD -->
+<div style="background: var(--cream); padding: 80px 0;">
+  <div id="dafo" class="section fade-in">
+    <div class="section-label">B · Autenticidad</div>
+    <div class="section-title">¿Quién soy?<br><em>DAFO Personal</em></div>
+
+    <div class="dafo-grid">
+      <div class="dafo-cell dafo-d">
+        <h3>
+          <div class="dafo-icon" style="background:rgba(239,68,68,0.1);">🎯</div>
+          Debilidades
+        </h3>
+        <ul>
+          <li><strong>Perfeccionismo excesivo</strong> — buscar siempre el máximo, incluso cuando no es posible, puede generar frustración y frenar decisiones. En gestión de activos, saber cuándo es suficiente es clave.</li>
+          <li><strong>Despiste</strong> — en un sector donde los detalles importan mucho (contratos, cifras, plazos), ser descuidado puede costar caro. Es un área que trabajar activamente.</li>
+          <li><strong>Organización mejorable</strong> — gestionar múltiples clientes, carteras y deadlines exige sistemas claros. Construir hábitos de organización es una prioridad antes de entrar al sector.</li>
+        </ul>
+      </div>
+      <div class="dafo-cell dafo-a">
+        <h3>
+          <div class="dafo-icon" style="background:rgba(245,158,11,0.1);">⚡</div>
+          Amenazas
+        </h3>
+        <ul>
+          <li><strong>Situación económica complicada</strong> — la inflación, los tipos de interés y la incertidumbre global reducen la oferta de posiciones júnior en firmas de élite.</li>
+          <li><strong>Alta competencia</strong> — muchos candidatos con perfiles similares (ADE + cuantitativo) compiten por las mismas plazas en las firmas top de gestión de activos.</li>
+          <li><strong>Barrera del CFA y másters especializados</strong> — muchos rivales llegarán con credenciales que yo aún no tengo, lo que exige compensar con otros diferenciadores.</li>
+          <li><strong>Automatización por IA</strong> — los roles júnior de análisis financiero básico están siendo absorbidos por herramientas automatizadas, lo que eleva el listón de entrada.</li>
+        </ul>
+      </div>
+      <div class="dafo-cell dafo-f">
+        <h3>
+          <div class="dafo-icon" style="background:rgba(34,197,94,0.1);">💪</div>
+          Fortalezas
+        </h3>
+        <ul>
+          <li><strong>Soy muy competitivo</strong> — en gestión de activos, querer siempre llegar al máximo no es un defecto, es un motor. Me empuja a ir más allá de lo que se espera.</li>
+          <li><strong>Alta sociabilidad</strong> — la gestión patrimonial se construye sobre relaciones de confianza duraderas. Conectar con personas es algo que me sale de forma natural.</li>
+          <li><strong>Buen nivel de inglés</strong> — imprescindible para trabajar en firmas europeas de referencia. Me abre puertas que a otros se les cierran.</li>
+          <li><strong>Trabajo bien en equipo</strong> — en entornos de inversión, las decisiones se toman en equipo. Saber colaborar bajo presión marca la diferencia.</li>
+          <li><strong>Responsable y muy trabajador</strong> — bachillerato de ciencias, EVAU con buena nota y doble grado completado en plazo son prueba de ello.</li>
+        </ul>
+      </div>
+      <div class="dafo-cell dafo-o">
+        <h3>
+          <div class="dafo-icon" style="background:rgba(59,130,246,0.1);">🌍</div>
+          Oportunidades
+        </h3>
+        <ul>
+          <li><strong>País y condiciones de vida</strong> — vivir en España con acceso a Madrid, uno de los principales centros financieros del sur de Europa, es una ventaja de partida enorme.</li>
+          <li><strong>La UFV</strong> — una universidad con red alumni activa en el sector financiero y enfoque humanista que diferencia el perfil de sus graduados.</li>
+          <li><strong>Business Analytics + ADE</strong> — una combinación poco frecuente que abre puertas en un sector que avanza hacia la gestión cuantitativa y el uso de datos.</li>
+          <li><strong>Mi padre como mentor</strong> — tener acceso directo a alguien con experiencia real en el mundo profesional es una ventaja que pocos candidatos tienen.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="reverse" class="section fade-in" style="padding-top: 0;">
+    <div class="section-label" style="margin-top: 40px;">Reverse Exercise</div>
+    <div class="section-title">Logros y <em>habilidades clave</em></div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(11,31,58,0.08); border-radius: 8px; overflow: hidden; margin-top: 40px;">
+      <div style="background: var(--navy); padding: 24px 28px;">
+        <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; line-height: 1.6;">¿De qué te sientes orgulloso/a? ¿Qué logros te gustaría compartir? ¿Para qué cuentan contigo y te reconocen de manera especial?</p>
+      </div>
+      <div style="background: var(--navy); padding: 24px 28px; border-left: 1px solid rgba(201,168,76,0.15);">
+        <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; line-height: 1.6;">¿Qué te ayudó a conseguir estos logros? ¿Qué ha sido clave de ti para alcanzarlos o que te reconozcan así?</p>
+      </div>
+
+      <div style="background: var(--white); padding: 24px 28px; border-top: 2px solid var(--gold);">
+        <p style="font-size: 15px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 6px;">🎓 Bachillerato de Ciencias + EVAU con buena nota</p>
+        <p style="font-size: 13px; color: var(--gray);">Completar un bachillerato científico exigente y entrar en el doble grado que quería con buena nota de acceso.</p>
+      </div>
+      <div style="background: var(--white); padding: 24px 28px; border-top: 2px solid var(--gold);">
+        <p style="font-size: 13px; color: var(--gray); line-height: 1.7;">Disciplina sostenida durante dos años, capacidad de estudio bajo presión y orientación clara a un objetivo concreto. Demostré que cuando me propongo algo, lo consigo.</p>
+      </div>
+
+      <div style="background: var(--white); padding: 24px 28px; border-top: 1px solid rgba(11,31,58,0.06);">
+        <p style="font-size: 15px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 6px;">⚽ Buen nivel en varios deportes de forma simultánea</p>
+        <p style="font-size: 13px; color: var(--gray);">Me muevo con soltura en distintos deportes y siempre busco mejorar, aunque sin competir a nivel de élite.</p>
+      </div>
+      <div style="background: var(--white); padding: 24px 28px; border-top: 1px solid rgba(11,31,58,0.06);">
+        <p style="font-size: 13px; color: var(--gray); line-height: 1.7;">Capacidad de adaptación a distintos entornos y reglas, trabajo en equipo, espíritu competitivo sano y constancia para seguir mejorando sin necesitar un resultado externo que me valide.</p>
+      </div>
+
+      <div style="background: var(--white); padding: 24px 28px; border-top: 1px solid rgba(11,31,58,0.06);">
+        <p style="font-size: 15px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 6px;">💪 Cambio físico y de hábitos importante</p>
+        <p style="font-size: 13px; color: var(--gray);">Hasta los 16 años tenía sobrepeso. Decidí cambiar y hoy me encuentro en forma y con hábitos saludables consolidados.</p>
+      </div>
+      <div style="background: var(--white); padding: 24px 28px; border-top: 1px solid rgba(11,31,58,0.06);">
+        <p style="font-size: 13px; color: var(--gray); line-height: 1.7;">Fuerza de voluntad real, autoexigencia personal y capacidad de transformar una situación incómoda en un punto de partida. Este logro me enseñó que puedo cambiar lo que no me gusta de mí mismo.</p>
+      </div>
+
+      <div style="background: var(--white); padding: 24px 28px; border-top: 1px solid rgba(11,31,58,0.06);">
+        <p style="font-size: 15px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 6px;">👨‍👩‍👦 Cambio en la dinámica familiar</p>
+        <p style="font-size: 13px; color: var(--gray);">He pasado de tener poca relación con mi familia a tener un vínculo fuerte, con muchos planes y momentos compartidos.</p>
+      </div>
+      <div style="background: var(--white); padding: 24px 28px; border-top: 1px solid rgba(11,31,58,0.06);">
+        <p style="font-size: 13px; color: var(--gray); line-height: 1.7;">Madurez emocional, capacidad de reflexión sobre mis propias actitudes y valentía para tomar la iniciativa en las relaciones personales. Demuestra inteligencia emocional, algo muy valorado en roles de gestión patrimonial.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;">Habilidades diferenciales identificadas</p>
+      <div class="skills-row">
+        <span class="skill-chip">Análisis de datos</span>
+        <span class="skill-chip">Relación con clientes</span>
+        <span class="skill-chip">Pensamiento cuantitativo</span>
+        <span class="skill-chip">Adaptabilidad</span>
+        <span class="skill-chip">Orientación al logro</span>
+        <span class="skill-chip">Trabajo en equipo</span>
+        <span class="skill-chip">Disciplina</span>
+        <span class="skill-chip">Inteligencia emocional</span>
+        <span class="skill-chip">Fuerza de voluntad</span>
+      </div>
+    </div>
+
+    <!-- 3. DIFERENCIACIÓN -->
+    <div style="margin-top: 64px;">
+      <div class="section-label">3 · Diferenciación / Ventaja Competitiva</div>
+      <div class="section-title" style="font-size: 32px;">¿Qué me hace <em>diferente?</em></div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(11,31,58,0.08); border-radius: 8px; overflow: hidden; margin-top: 32px;">
+        <div style="background: var(--navy); padding: 24px 28px;">
+          <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; line-height: 1.6;">a. Teniendo en cuenta tus objetivos profesionales, ¿quién/es consideras tu/s principal/es competidor/es?</p>
+        </div>
+        <div style="background: var(--navy); padding: 24px 28px; border-left: 1px solid rgba(201,168,76,0.15);">
+          <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 500; line-height: 1.6;">b. Si los analizas y los comparas contigo, ¿con qué cuentas que ellos no cuentan? ¿Hay algo que te diferencie y en lo que puedas apoyar tu Marca Personal?</p>
+        </div>
+
+        <div style="background: var(--white); padding: 28px; border-top: 2px solid var(--gold);">
+          <p style="font-size: 15px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 12px;">Mis principales competidores son:</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 13px; color: var(--gray); line-height: 1.6; padding-left: 16px; position: relative;">
+              <span style="position:absolute; left:0; color:var(--gold);">—</span>
+              <strong style="color:var(--navy);">Graduados de ADE puro</strong> — muchos con notas similares, prácticas en banca y un perfil muy estándar en el mercado.
+            </li>
+            <li style="font-size: 13px; color: var(--gray); line-height: 1.6; padding-left: 16px; position: relative;">
+              <span style="position:absolute; left:0; color:var(--gold);">—</span>
+              <strong style="color:var(--navy);">Perfiles con prácticas de más nombre</strong> — candidatos que han pasado por firmas conocidas del sector financiero y llegan con ese sello en el CV.
+            </li>
+            <li style="font-size: 13px; color: var(--gray); line-height: 1.6; padding-left: 16px; position: relative;">
+              <span style="position:absolute; left:0; color:var(--gold);">—</span>
+              <strong style="color:var(--navy);">Perfiles con máster o CFA</strong> — candidatos que compensan la falta de experiencia con credenciales académicas especializadas.
+            </li>
+          </ul>
+        </div>
+
+        <div style="background: var(--white); padding: 28px; border-top: 2px solid var(--gold);">
+          <p style="font-size: 15px; font-family: 'Playfair Display', serif; color: var(--navy); margin-bottom: 12px;">Lo que tengo yo que ellos no tienen:</p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-size: 13px; color: var(--gray); line-height: 1.6; padding-left: 16px; position: relative;">
+              <span style="position:absolute; left:0; color:var(--gold);">—</span>
+              <strong style="color:var(--navy);">Sociabilidad natural</strong> — en gestión patrimonial, la capacidad comercial y de generar confianza con clientes no se aprende en un máster. O la tienes o no la tienes. Yo la tengo.
+            </li>
+            <li style="font-size: 13px; color: var(--gray); line-height: 1.6; padding-left: 16px; position: relative;">
+              <span style="position:absolute; left:0; color:var(--gold);">—</span>
+              <strong style="color:var(--navy);">Perfil comercial genuino</strong> — soy capaz de conectar con cualquier persona, adaptarme al contexto y generar relaciones de confianza. En un rol de gestión de clientes de alto patrimonio, eso vale más que el nombre de las prácticas.
+            </li>
+            <li style="font-size: 13px; color: var(--gray); line-height: 1.6; padding-left: 16px; position: relative;">
+              <span style="position:absolute; left:0; color:var(--gold);">—</span>
+              <strong style="color:var(--navy);">Determinación real</strong> — cuando quiero algo, me esfuerzo lo que haga falta. No me rindo ante la dificultad. Eso, combinado con mi formación cuantitativa, me hace un perfil muy difícil de igualar a medio plazo.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. BENCHMARKING -->
+    <div id="benchmarking" style="margin-top: 64px;">
+      <div class="section-label">4 · Benchmarking</div>
+      <div class="section-title" style="font-size: 32px;">Mis <em>referentes</em></div>
+      <div class="benchmarking-cards">
+        <div class="bench-card">
+          <div class="bench-initial">P</div>
+          <h4>Mi Padre</h4>
+          <p>Mi referente más cercano y profundo. Profesionalmente admiro su trayectoria, su experiencia y la forma en que navega el mundo de los negocios. Pero lo que más admiro de él va más allá: junto a mi madre ha sabido construir una familia preciosa. Me enseña que el éxito real no se mide solo en resultados profesionales, sino en el tipo de persona y de padre que eres. En él veo el modelo de vida al que aspiro.</p>
+        </div>
+        <div class="bench-card">
+          <div class="bench-initial">CR</div>
+          <h4>Cristiano Ronaldo</h4>
+          <p>Soy del Real Madrid y Cristiano ha hecho historia en el club del que soy muy fan. Lo que me inspira de él es su competitividad absoluta y su liderazgo: nunca da nada por imposible y siempre quiere más. Esa mentalidad de no conformarse con lo que tienes y seguir empujando es algo que intento trasladar a mi vida profesional. Si quiero algo, trabajo sin descanso por conseguirlo.</p>
+        </div>
+        <div class="bench-card">
+          <div class="bench-initial">LM</div>
+          <h4>Luka Modrić</h4>
+          <p>Otro madridista que me inspira por razones completamente distintas. Modrić demuestra que se puede tener una fama enorme y seguir siendo una persona humilde, de perfil bajo, que ama lo que hace sin necesitar estar en el centro de atención. Me recuerda que la grandeza no necesita ruido. En un sector como el financiero, donde la discreción y la confianza lo son todo, ese modelo de persona me parece extraordinario.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider-full"></div>
+
+<!-- C. POSICIONAMIENTO -->
+<div id="posicionamiento" class="positioning-bg">
+  <div class="section fade-in">
+    <div class="section-label">C · Estrategia de Marca Personal</div>
+    <div class="section-title" style="color:white;">Posicionamiento<br><em>deseado</em></div>
+
+    <div class="positioning-statement">
+      <div class="ps-row">
+        <div class="ps-label">Para</div>
+        <div class="ps-text">Firmas de gestión de activos, banca privada y family offices europeos</div>
+      </div>
+      <div class="ps-row">
+        <div class="ps-label">Que buscan</div>
+        <div class="ps-text">Talento joven con capacidad analítica avanzada, visión de negocio y habilidades relacionales para gestionar carteras y construir relaciones con clientes de alto patrimonio</div>
+      </div>
+      <div class="ps-row">
+        <div class="ps-label">Yo, como</div>
+        <div class="ps-text">Juan Gálvez Gafo, graduado en Business Analytics + ADE por la UFV</div>
+      </div>
+      <div class="ps-row">
+        <div class="ps-label">Ofrezco</div>
+        <div class="ps-text">La combinación de pensamiento cuantitativo, análisis de datos y comprensión profunda del negocio que permite tomar mejores decisiones de inversión y construir relaciones duraderas con clientes</div>
+      </div>
+      <div class="ps-row">
+        <div class="ps-label">Que permitirá</div>
+        <div class="ps-text">Incorporar un perfil versátil capaz de operar en análisis de carteras, reporting y relación con clientes desde el primer día</div>
+      </div>
+      <div class="ps-row">
+        <div class="ps-label">Diferente porque</div>
+        <div class="ps-text">Pocos candidatos junior combinan formación cuantitativa real con la inteligencia relacional y la orientación comercial que exige la gestión patrimonial de alto nivel</div>
+      </div>
+      <div class="ps-row">
+        <div class="ps-label">Gracias a</div>
+        <div class="ps-text">Un doble grado exigente, formación específica en gestión patrimonial con el Banco Santander, y una mentalidad competitiva orientada a resultados demostrada desde los primeros años universitarios</div>
+      </div>
+    </div>
+
+    <div class="valor-grid" style="margin-top: 40px;">
+      <div class="valor-card">
+        <div class="icon">📊</div>
+        <h4>Datos + Finanzas</h4>
+        <p>Formación cuantitativa que pocos perfiles financieros tienen. Capaz de leer un modelo y construirlo.</p>
+      </div>
+      <div class="valor-card">
+        <div class="icon">🤝</div>
+        <h4>Relación de Clientes</h4>
+        <p>Habilidades sociales naturales y alta capacidad empática, esenciales en wealth management.</p>
+      </div>
+      <div class="valor-card">
+        <div class="icon">🌍</div>
+        <h4>Movilidad Europea</h4>
+        <p>Inglés profesional y disposición a trabajar en cualquier mercado europeo de referencia.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider-full"></div>
+
+<!-- D. VISIBILIDAD -->
+<div id="visibilidad" style="background: var(--cream); padding: 80px 0;">
+    <div class="section-title">Plan de <em>comunicación</em></div>
+
+    <div class="shield-grid">
+      <div class="shield-card">
+        <h3>Temas por los que quiero ser conocido</h3>
+        <div class="shield-items">
+          <div class="shield-item">
+            <div class="shield-num">1</div>
+            Gestión de activos e inversión patrimonial
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">2</div>
+            Aplicación de datos y analítica en decisiones financieras
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">3</div>
+            Ser buena persona, buen padre y construir una familia sólida
+          </div>
+        </div>
+      </div>
+      <div class="shield-card">
+        <h3>Habilidades que quiero que reconozcan</h3>
+        <div class="shield-items">
+          <div class="shield-item">
+            <div class="shield-num">1</div>
+            Análisis financiero cuantitativo
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">2</div>
+            Comunicación y relación con clientes
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">3</div>
+            Resolución de problemas complejos con datos
+          </div>
+        </div>
+      </div>
+      <div class="shield-card">
+        <h3>Atributos de personalidad</h3>
+        <div class="shield-items">
+          <div class="shield-item">
+            <div class="shield-num">1</div>
+            Competitivo y orientado a resultados
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">2</div>
+            Sociable, cercano y fácil de tratar
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">3</div>
+            Deportista: disciplina, equipo y superación
+          </div>
+        </div>
+      </div>
+      <div class="shield-card">
+        <h3>Medios prioritarios para ser visible</h3>
+        <div class="shield-items">
+          <div class="shield-item">
+            <div class="shield-num">1</div>
+            LinkedIn — contenido sobre AM y mercados
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">2</div>
+            Red alumni UFV en el sector financiero
+          </div>
+          <div class="shield-item">
+            <div class="shield-num">3</div>
+            Boca a boca — ser una persona de referencia y confianza en mi sector
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider-full"></div>
+
+<!-- E. PLAN DE ACCIÓN -->
+<div id="pap" class="pap-bg">
+  <div class="section fade-in">
+    <div class="section-label">E · Plan de Acción Personal</div>
+    <div class="section-title">PAP <em>2025–2026</em></div>
+
+    <table class="pap-table">
+      <thead>
+        <tr>
+          <th>Acción</th>
+          <th>Plazo</th>
+          <th>KPI / Resultado esperado</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Optimizar LinkedIn: foto profesional, headline con propuesta de valor, resumen en inglés</td>
+          <td>1 mes</td>
+          <td>Perfil al 100% · +50 conexiones sector financiero</td>
+          <td><span class="badge badge-gold">Prioritario</span></td>
+        </tr>
+        <tr>
+          <td>Identificar y contactar 5 alumni UFV en firmas de AM o banca privada para informational interviews</td>
+          <td>2 meses</td>
+          <td>3 conversaciones realizadas · referencias concretas</td>
+          <td><span class="badge badge-gold">Prioritario</span></td>
+        </tr>
+        <tr>
+          <td>Iniciar preparación CFA Level I (estudio autónomo)</td>
+          <td>3 meses</td>
+          <td>Plan de estudio activo · 2h/semana mínimo</td>
+          <td><span class="badge badge-blue">Medio plazo</span></td>
+        </tr>
+        <tr>
+          <td>Aplicar a programas de graduate / summer internship en 10 firmas target europeas</td>
+          <td>3–4 meses</td>
+          <td>Mínimo 3 entrevistas obtenidas</td>
+          <td><span class="badge badge-blue">Medio plazo</span></td>
+        </tr>
+        <tr>
+          <td>Publicar 1 post mensual en LinkedIn sobre mercados, AM o tendencias financieras</td>
+          <td>Mensual</td>
+          <td>+200 impresiones por post · presencia digital activa</td>
+          <td><span class="badge badge-blue">Continuo</span></td>
+        </tr>
+        <tr>
+          <td>Asistir a al menos 2 eventos del sector (CFA Society Spain, foros UFV, etc.)</td>
+          <td>6 meses</td>
+          <td>+10 nuevos contactos cualificados en el sector</td>
+          <td><span class="badge badge-green">6 meses</span></td>
+        </tr>
+        <tr>
+          <td>Evaluar máster especializado (MSc Finance o MBA) en Europa para el año 3</td>
+          <td>12 meses</td>
+          <td>Shortlist de 5 programas · decisión tomada</td>
+          <td><span class="badge badge-green">Año 1</span></td>
+        </tr>
+        <tr>
+          <td>Kick-off meeting personal anual: revisar logros, ajustar objetivos y redefinir PAP</td>
+          <td>Anual</td>
+          <td>Documento actualizado · nuevo ciclo iniciado</td>
+          <td><span class="badge badge-green">Anual</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h2>Juan <span>Gálvez</span> Gafo</h2>
+  <p>Business Analytics + ADE · UFV Madrid · 2025–2026</p>
+  <p style="margin-top: 8px; font-size: 11px;">Personal Branding Project · Modelo CAV</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
